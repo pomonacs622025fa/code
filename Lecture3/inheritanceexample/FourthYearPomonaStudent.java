@@ -19,6 +19,7 @@ class FourthYearPomonaStudent extends PomonaStudent {
         this.thesisTitle = thesisTitle;
     }
 
+    @Override
     protected int getMaxCredits(){
         return 6;
     }
