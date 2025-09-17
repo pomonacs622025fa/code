@@ -22,6 +22,20 @@ public class SinglyLinkedList<E> implements List<E> {
 		size++;
 	};
 
+	//adds to the tail of the list 
+	public void addLast(E element) {
+
+		Node finger = head;
+		while (finger.next != null) {
+			finger = finger.next;
+		}
+
+		Node n = new Node();
+		n.element = element;
+		finger.next = n;
+		size++;
+	};
+
 	/**
 	 * Inserts the specified element at the specified index.
 	 * 
@@ -154,9 +168,9 @@ public class SinglyLinkedList<E> implements List<E> {
 
 	//returns size of list that starts at node node
 	private int size(Node node) {
-		//base case - just a single node
-		if (node.next == null) {
-			return 1;
+		//base case - nothing
+		if (node == null) {
+			return 0;
 		}
 		//recursive case - 1 for current node + size of next chain 
 		return 1 + size(node.next);
@@ -175,8 +189,10 @@ public class SinglyLinkedList<E> implements List<E> {
 		SinglyLinkedList<Integer> sll = new SinglyLinkedList<Integer>();
 		sll.add(4);
 		sll.add(10);
-		System.out.println(sll.get(0).toString()); //4
-		System.out.println(sll.get(1).toString()); //10
+		System.out.println(sll.get(0).toString()); //10 - add to head
+		System.out.println(sll.get(1).toString()); //4
+		sll.addLast(5);
+		System.out.println(sll.get(2).toString()); //5
 		System.out.println(sll.size());
 
 	}
